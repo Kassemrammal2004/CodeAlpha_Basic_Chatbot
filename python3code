@@ -1,0 +1,59 @@
+from nltk.chat.util import Chat, reflections
+pairs = [
+    [
+        r"my name is (.*)",
+        ["Hello %1, How are you today?"]
+    ],
+    [
+        r"hi|hello|hey",
+        ["Hello", "Hey there", "Hi, how can I help you today?"]
+    ],
+    [
+        r"what is your name?",
+        ["I am a chatbot created by you. You can call me Chatbot."]
+    ],
+    [
+        r"how are you?",
+        ["I'm just a program, but I'm doing great! How about you?"]
+    ],
+    [
+        r"sorry (.*)",
+        ["No worries, it's all good!"]
+    ],
+    [
+        r"I am (.*) (good|well|okay|ok)",
+        ["Good to hear that!", "Great, how can I assist you today?"]
+    ],
+    [
+        r"(.*) (location|city) ?",
+        ["I'm a virtual assistant, so I exist in the cloud!"]
+    ],
+    [
+        r"how can I (.*)",
+        ["You can ask me anything, and I'll do my best to help."]
+    ],
+    [
+        r"(.*) created (you|this bot|chatbot)?",
+        ["I was created by a Python programmer.", "I am a product of some Python code."]
+    ],
+    [
+        r"quit|exit|leave",
+        ["Bye! Have a nice day!", "Goodbye!"]
+    ],
+    [
+        r"(.*)",
+        ["I'm not sure I understand that.", "Could you please clarify?", "I'm here to help, but I'm not sure what you mean."]
+    ],
+]
+#----------------------------------------------------------------------------------
+chatbot = Chat(pairs, reflections)
+print("Hi, I'm your chatbot. Type 'quit', 'leave', or 'exit' to stop.")
+while True:
+    user_input = input("> ")
+    #-------------------------------------------------
+    if user_input.lower() in ["quit", "exit", "leave"]:
+        print("Goodbye!")
+        break
+    else:
+        print(chatbot.respond(user_input))
+#-----------------------------------------
